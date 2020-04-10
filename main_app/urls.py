@@ -1,12 +1,12 @@
 from django.urls import path
 from . import views
 
-from django.contrib import admin
-from django.urls import path, include
+# from django.contrib import admin
+# from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('main_app.urls')),
+    # path('admin/', admin.site.urls),
+    # path('', include('main_app.urls')),
 
 
     # General Pages
@@ -14,7 +14,7 @@ urlpatterns = [
     path('about/', views.about, name ='about'),
 
     # GROUP
-    path('group/', views.groups_index, name ='groups_index')
+    path('group/', views.groups_index, name ='groups_index'),
     
     # HOUSEMATES
     path('group/member', views.members_index, name ='index'),
@@ -27,7 +27,7 @@ urlpatterns = [
     path('chores/', views.ChoreList.as_view(), name = 'chore_index'),
     path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
     path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),
-    path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update')
+    path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update'),
     path('chores/<int:pk>/remove', views.ChoreRemove. as_view(), name ='chores_remove')
 
 ]

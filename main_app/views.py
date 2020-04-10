@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 
-from .models import Housemate, Chore
+from .models import Profile, Chore
 # Import forms after they're created
 
 
