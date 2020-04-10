@@ -18,6 +18,8 @@ class Home(models.Model):
 	name=models.CharField(max_length=50)
 	address=models.CharField(max_length=100)
 	manager=models.ForeignKey(Profile,models.SET_NULL,blank=True,null=True)
+	#M:M
+	chores=models.ManyToManyField(Chore)
 	def __str__(self):
 		return self.name
 
