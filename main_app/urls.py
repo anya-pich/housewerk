@@ -13,14 +13,14 @@ urlpatterns = [
     path('about/', views.about, name ='about'),
 
     # HOUSEMATES
-    path('housemates/', views.housemates_index, name ='index'),
-    path('housemates/new/', views.new_housemate, name ='new_housemate'),
-    path('housemates/<int:housemate_id>/', views.housemates_detail, name ='detail'),
-    path('housemates/<int:housemate_id/edit/', views.housemates_update, name = 'housemates_update'),
-    path('housemates/<int:housemate_id/delete', views.housemates_delete, name ='housemates_delete'),
+    path('group/member', views.members_index, name ='index'),
+    path('group/member/new/', views.new_member, name ='new_member'),
+    path('group/member/<int:member_id>/', views.members_detail, name ='detail'),
+    path('group/member/<int:member_id/edit/', views.members_edit, name = 'members_edit'),
+    path('group/member/<int:member_id/delete', views.members_delete, name ='members_delete'),
 
     # CHORES
-    path('chores/', views.ChoreList.as_view(), name = 'chores_index'),
+    path('chores/', views.ChoreList.as_view(), name = 'index'),
     path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
     path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),
     path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update')
