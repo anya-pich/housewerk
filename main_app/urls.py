@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_app.urls')),
 
+
     # General Pages
     path('', views.home, name ='home'),
     path('about/', views.about, name ='about'),
@@ -28,6 +29,5 @@ urlpatterns = [
     path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),
     path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update')
     path('chores/<int:pk>/remove', views.ChoreRemove. as_view(), name ='chores_remove')
-
 
 ]

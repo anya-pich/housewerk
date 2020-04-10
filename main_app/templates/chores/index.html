@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All the chores:</h1>
+
+    <a href="#">Add</a>
+
+    {% for chore in chores %}
+      <div class="card">
+        <div class="card-header">
+          {{ chore.name }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ chore.name }}</h5>
+          <p class="card-text">{{ chore.description }}</p>
+          <a href="#" class="btn btn-primary">Edit</a>
+          <a href="#" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    {% endfor %}
+
+{% endblock content %}
