@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .model import *
+from .models import *
 
-class ChoreForm(forms.ModelForm):
+class ChoreForm(ModelForm):
 	class Meta:
 		model = Chore
 		fields = ('name', 'description')

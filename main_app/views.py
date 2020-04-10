@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 
-from .models import Housemate, Chore
+
 # Import forms after they're created
 
 
@@ -27,6 +27,7 @@ def chores_index(request):
 # 	chore = Chore.objects.get(id = chore_id)
 
 # 	return render(request, )
+
 
 def new_member(request):
 	error_message=''
