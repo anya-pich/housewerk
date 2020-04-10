@@ -77,8 +77,7 @@ WSGI_APPLICATION = 'housewerk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'housewerk',
-        'USER':'hch'
+        'NAME': 'housewerk'
     }
 }
 
