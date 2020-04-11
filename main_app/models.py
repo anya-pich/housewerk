@@ -28,6 +28,7 @@ class Schedule(models.Model):
 	profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
 	chroe=models.ForeignKey(Chore,on_delete=models.CASCADE)
 	time=models.DurationField()
+	Mark=models.BooleanField(default=False)
 
 
 
