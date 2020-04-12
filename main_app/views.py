@@ -42,8 +42,10 @@ def members_edit(request):
 def members_remove(request):
 	return render(request, 'group/index.html')
 
-# def (request):
-# 	return render(request, '.html')
+# PROFILE
+
+def profile_home(request):
+	return render(request, 'profile/home.html')
 
 # def (request):
 # 	return render(request, '.html')
