@@ -16,6 +16,9 @@ urlpatterns = [
     path('group/member/<int:member_id/edit/', views.members_edit, name = 'members_edit'),
     path('group/member/<int:member_id/remove', views.members_remove, name ='members_remove'),
 
+    # PROFILE
+    path('profile/', views.profile_home, name='profile_home'), # temp for testing html
+
     # CHORES
     # path('chores/', views.ChoreList.as_view(), name = 'chore_index'),
     # path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
