@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Create new group:</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio ex laboriosam id dolorem, alias minus debitis officiis vel quo, architecto obcaecati eveniet ad voluptatem dolorum dolore deserunt expedita quas repellendus.</p>
-    <a href="">Save</a>
-    <a href="">Cancel</a>
-    <a href="">Log in to existing group</a>
+        <section class="form-section">
+        <h1>Create new group:</h1>
+        <form  method="POST" class="artist-form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn" type="submit">Save</button>
+        </form>
+    </section>
 {% endblock content %}

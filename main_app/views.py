@@ -22,7 +22,7 @@ def about(request):
 
 # GROUP
 
-def group_index(request):
+def group_index(request): 
   return render(request, 'group/index.html')
 
 # HOUSEMATES
@@ -95,5 +95,15 @@ def new_member(request):
 	return render(request,'profile/create.html',context)
 
 def new_group(request):
-	profile=request.user.profile
-	print(profile.id)
+	if request.method=='POST':
+		form=HomeForm(request.POST)
+		if form.is_valid():
+			home=form.save(commit=False)
+			home.manager=request.user.profile
+			home.save()
+			return redirect('group_index')#TODO:adjust group_index
+	else:
+		form=HomeForm()
+	context={'form':form}
+	return render(request,'group/create.html',context)
+
