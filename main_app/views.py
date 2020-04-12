@@ -92,3 +92,6 @@ def new_member(request):
 	context={'form':form,'p_form':profile_form,'error_message':error_message}
 	return render(request,'profile/create.html',context)
 
+def new_group(request):
+	profile=request.user.profile
+	print(profile.id)

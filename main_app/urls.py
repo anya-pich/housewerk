@@ -8,6 +8,7 @@ urlpatterns = [
 
     # GROUP
     path('group/', views.group_index, name ='group_index'),
+    path('group/new',views.new_group,name='new_group'),
     
     # HOUSEMATES
     path('group/members', views.members_index, name ='members_index'),
