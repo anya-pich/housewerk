@@ -21,6 +21,7 @@ urlpatterns = [
 
     # PROFILE
     path('profile/', views.profile_home, name='profile_home'), # temp for testing html
+    path('login/', views.login, name='login'),
 
     # CHORES
     # path('chores/', views.ChoreList.as_view(), name = 'chore_index'),
