@@ -5,15 +5,13 @@
   <!-- add this single line below -->
  
     <div class="card-content">
-    {%   if home == None %}
-    <p> create button </p>
-	{% else %}
- <a href="{% url 'group_detail'  home.id %}">
+    
+
 <span class="card-title">{{ home.name }}</span>
       <p>Address: {{ home.address }}</p>
-{% endif %}	
+
     </div>
   <!-- and this following one as well -->
-  </a>
+
 </div>
 {% endblock content %}
