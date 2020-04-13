@@ -12,6 +12,7 @@ urlpatterns = [
     path('group/invite',views.group_invite,name='group_invite'),
     path('group/invite/<int:profile_id>',views.group_invite_member,name='group_invite_member'),
     path('group/detail/<int:home_id>',views.group_detail,name='group_detail'),
+    path('group/<int:home_id>/edit',views.group_update,name='group_update'),
     
     # HOUSEMATES
     path('group/members', views.members_index, name ='members_index'),
