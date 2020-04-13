@@ -13,11 +13,14 @@ urlpatterns = [
     path('group/invite/<int:profile_id>',views.group_invite_member,name='group_invite_member'),
     path('group/detail/<int:home_id>',views.group_detail,name='group_detail'),
     path('group/<int:home_id>/edit',views.group_update,name='group_update'),
+    path('group/<int:home_id>/chores',views.group_chores,name='group_chores'),
+    path('group/<int:home_id>/chores/<int:chore_id>',views.group_chore_assoc,name='group_chore_assoc'),
     
     # HOUSEMATES
     path('group/members', views.members_index, name ='members_index'),
     path('group/member/new/', views.new_member, name ='new_member'),
-    path('group/member/<int:member_id>/', views.members_detail, name ='detail'),
+   # path('group/member/<int:member_id>/', views.members_detail, name ='detail'),
+    path('group/member/<int:profile_id>/', views.members_detail, name ='member_detail'),
     path('group/member/<int:member_id/edit/', views.members_edit, name = 'members_edit'),
     path('group/member/<int:member_id/remove', views.members_remove, name ='members_remove'),
 
