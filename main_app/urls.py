@@ -26,11 +26,13 @@ urlpatterns = [
     path('login/', views.login, name='login'),
 
     # CHORES
-    path('chores/', views.chores_index, name = 'chores_index')
-    # path('chores/', views.ChoreList.as_view(), name = 'chores_index'),
-    # path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
-    # path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),
-    # path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update'),
-    # path('chores/<int:pk>/remove', views.ChoreRemove. as_view(), name ='chores_remove'),
+    path('chores/', views.chores_index, name = 'chores_index'),
+    # path('chores/<int:chore_id>/update', views.chores_update, name ='chores_update'),
+    # path('chores/<int:chore_id>/delete', views.chores_delete, name ='chores_delete'),
+    # path('chores/index', views.ChoreList.as_view(), name = 'chores_index'),
+    path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
+    path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),
+    path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update'),
+    path('chores/<int:pk>/delete', views.ChoreDelete. as_view(), name ='chores_delete'),
 
 ]
