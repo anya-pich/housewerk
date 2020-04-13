@@ -134,9 +134,22 @@ def group_index(request):
 		return render(request,'group/index.html',{'home':home})
 
 def  group_detail(request,home_id):
-	if request.user.profile.home_id.id!=Home.objects.get(id=home_id).manager:
+	if request.user.profile!=Home.objects.get(id=home_id).manager:
 		#return redirect(request,'profile_home')
 		return render(request,'profile/home.html')
 	else:
+		print('here')
 		home=Home.objects.get(id=home_id)
-		return render(request,'group/group_detail.html',{'home':home})
+		profiles=Profile.objects.filter(home_id=home_id)
+		return render(request,'group/group_detail.html',{'home':home,'profiles':profiles})
+
+def group_update(request,home_id):
+	home=Home.objects.get(id=home_id)
+	if(request.method=="POST"):
+		form=HomeForm(request.POST,instance=home)
+		if form.is_valid():
+			home=form.save()
+			return redirect('group_detail',home.id)
+	else:
+		form=HomeForm(instance=home)
+	return render(request,'group/create.html',{'form':form})

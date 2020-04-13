@@ -6,7 +6,8 @@
  
     <div class="card-content">
     {%   if home == None %}
-    <p> create button </p>
+    <p>you are  not in any group want to create one?</p>
+   <a class="btn btn-primary" href="{% url 'new_group' %}">create group</a>
 	{% else %}
  <a href="{% url 'group_detail'  home.id %}">
 <span class="card-title">{{ home.name }}</span>
