@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+  <body class="wallpaper-light">
+    {% include 'includes/navbar.html' %}
+    <main class="container my-5">
+      <div class="jumbotron container shadow my-4 p-5 rounded">
+        <div class="row align-items-center">
+          <div class="col-md-3 d-flex justify-content-center">
+            <img 
+              class="img-thumbnail rounded-circle shadow-sm" 
+              alt="profile photo" 
+              src="https://randomuser.me/api/portraits/men/66.jpg"
+            >
+          </div>
+          <div class="col">
+            <div class="card h-100 my-4 shadow-sm">
+              <div class="card-body p-4">
+                
+                  
+                  <h2>Your Profile</h2>
+                  <dl class="row">
+                    <dt class="col-sm-3">Name:</dt>
+                    <dd class="col-sm-9">{{ user.user }}</dd>
+                    <dt class="col-sm-3">Email:</dt>
+                    <dd class="col-sm-9">{{ user.email }}</dd>
+                  </dl>
+                  <button type="button" class="btn text-white btn-warning" data-toggle="modal" data-target="#exampleModal">
+                  Contact the seller
+                  </button>
+                  <button type="button" class="btn btn-danger">Add to My Favorite</button>
+                  <a hre
+                  <a href="{% url 'cats_update' cat.id %}" class="btn btn-danger"> Delete Profile </a>
+                
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{ user.user }}
+  </body>
+{% include 'includes/footer_solid.html' %}
+{% endblock %}

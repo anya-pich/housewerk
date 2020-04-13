@@ -20,11 +20,14 @@ urlpatterns = [
     path('group/member/<int:member_id/remove', views.members_remove, name ='members_remove'),
 
     # PROFILE
-    path('profile/', views.profile_home, name='profile_home'), # temp for testing html
+    path('profile/<int:profile_id>/', views.profile_home, name='profile_home'),
     path('login/', views.login, name='login'),
+    path('profile/<int:profile_id>/view', views.profile_view, name='profile_view'),
+    path('profile/<int:profile_id>/edit', views.profile_edit, name='profile_edit'),
+    path('profile/<int:profile_id>/delete', views.profile_delete, name='profile_delete'),
 
     # CHORES
-    path('chores/', views.chores_index, name = 'chores_index')
+    path('chores/', views.chores_index, name = 'chores_index'),
     # path('chores/', views.ChoreList.as_view(), name = 'chores_index'),
     # path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
     # path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),

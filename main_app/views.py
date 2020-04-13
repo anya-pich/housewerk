@@ -15,7 +15,7 @@ from django.views.generic import ListView, DetailView
 # Create your views here.
 
 def home(request):
-	return render(request, 'home.html')
+	return render(request, 'landing.html')
 
 def about(request):
 	return render(request, 'about.html')
@@ -49,6 +49,23 @@ def profile_home(request):
 
 def login(request):
 	return render(request, 'registration/login.html')
+
+def profile_view(request, profile_id):
+	user = Profile.objects.get(id=profile_id)
+	context = {
+		'user': user,
+	} 
+	return render(request, 'profile/view.html', context)
+
+def profile_edit(request, profile_id):
+	profile = Profile.objects.get(id=profile_id)
+	if request.method == "POST":
+		
+	return render(request, 'profile/edit.html')
+
+def profile_delete(request, profile_id):
+	Profile.objects.get(id=profile_id).delete()
+	return redirect('home')
 
 
 # CHORES
