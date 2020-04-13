@@ -24,7 +24,8 @@ urlpatterns = [
     path('login/', views.login, name='login'),
 
     # CHORES
-    # path('chores/', views.ChoreList.as_view(), name = 'chore_index'),
+    path('chores/', views.chores_index, name = 'chores_index')
+    # path('chores/', views.ChoreList.as_view(), name = 'chores_index'),
     # path('chores/<int:pk>/', views.ChoreDetail.as_view(), name = 'chores_detail'),
     # path('chores/create/', views.ChoreCreate.as_view(), name ='chores_create'),
     # path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update'),
