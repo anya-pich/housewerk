@@ -1,8 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     <h1>Chore details:</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio ex laboriosam id dolorem, alias minus debitis officiis vel quo, architecto obcaecati eveniet ad voluptatem dolorum dolore deserunt expedita quas repellendus.</p>
-    <a href="">Edit</a>
-    <a href="">Delete</a>
+        <div  class="row d-flex justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+                <div class="card border-warning h-100">
+
+                      <div class="card-header bg-warning">
+                          <h5 class="card-title text-white">{{ chore.name }}</h5>
+                      </div>
+
+                        <div class="card-body">
+                          <p class="card-text text-secondary">{{ chore.description }}</p>
+                        </div>
+
+                    <div class="card-footer bg-warning text-white">
+                          
+                          <div class="float-right">
+                            <a href="{% url 'chores_update' chore.id %}" class="btn btn-primary">Edit</a>
+                            <a href= "{% url 'chores_delete' chore.id %}" class="btn btn-danger">Delete</a>
+                          </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 {% endblock content %}

@@ -1,38 +1,46 @@
 {% extends 'base.html' %}
-
 {% block content %}
+{% include 'includes/navbar.html' %}
 
-<h1>All the chores:</h1>
+<h3 class="text-muted my-4 brand">All Chores:</h3> 
+<body class="wallpaper-light">
 
 {% for chore in chores %}
 
-  <div class="row">
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
-          <div class="card border-warning h-100">
-              <div class="card-header text-center bg-warning">
-                      <h4 class="card-title text-white"> {{ chore.name }} </h4>
-              </div>
-                  
-                  <div class="card-body">
-                    <p class="card-text text-secondary"> 
-                    {{ chore.description }} </p>
-                  </div>
-                  
-                  <div class="card-footer bg-warning text-white">
-                      <div class="float-right">
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+<main class="container py-5">
+        <div  class="row d-flex justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+                <div class="card border-warning h-100">
+
+                      <div class="card-header bg-warning">
+                          <h5 class="card-title text-white">{{ chore.name }}</h5>
                       </div>
 
-                      <div class="float-left">
-                        <a href="#" class="btn btn-success">Add</a>
-                      </div>
-                  </div>
+                        <div class="card-body">
+                          <p class="card-text text-secondary">{{ chore.description }}</p>
+                        </div>
+
+                    <div class="card-footer bg-warning text-white">
+                          
+                          <div class="float-right">
+                            <a href="{% url 'chores_update' chore.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url 'chores_delete' chore.id %}" class="btn btn-danger">Delete</a>
+                          </div>
+
+                          <div class="float-left">
+                            <a href="#" class="btn btn-success">Add</a>
+                          </div>
+
+                    </div>
+                </div>
             </div>
-       </div>
-  </div>
-{% endfor %}
+        </div>
+</main>
 
+</body>
+
+{% endfor %}
+{% include 'includes/footer_solid.html' %}
 {% endblock %}
 
 
