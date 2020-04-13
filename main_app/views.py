@@ -87,7 +87,7 @@ def new_member(request):
 			profile=profile_form.save(commit=False)
 			profile.user=user
 			profile.save()
-			login(request,user)
+			#login(request,user)
 			return redirect('home')
 	else:
 		error_message='Invalid sign up'
@@ -122,3 +122,21 @@ def group_invite_member(request,profile_id):
 	profile.home_id=request.user.profile.home_id
 	profile.save()
 	return  redirect('group_invite')
+
+def group_index(request):
+	profile=request.user.profile
+	print(profile.home_id)
+	if profile.home_id==None:
+		home=None
+		return render(request,'group/index.html',{'home':home})
+	else:
+		home=Home.objects.get(id=profile.home_id.id)
+		return render(request,'group/index.html',{'home':home})
+
+def  group_detail(request,home_id):
+	if request.user.profile.home_id.id!=Home.objects.get(id=home_id).manager:
+		#return redirect(request,'profile_home')
+		return render(request,'profile/home.html')
+	else:
+		home=Home.objects.get(id=home_id)
+		return render(request,'group/group_detail.html',{'home':home})
