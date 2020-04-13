@@ -191,3 +191,11 @@ def group_update(request,home_id):
 # 	chores_profile_doesnt_have=Chore.objects.exclude(id__in=profile.chores.all().values_list('id'))
 # 	return render(request,'group/member/detail.html',{'profile':profile,'chores':chores_profile_doesnt_have})
 
+def group_chores(request,home_id):
+	home=Home.objects.get(id=home_id)
+	chores_home_doesnt_have=Chore.objects.exclude(id__in=home.chores.all().values_list('id'))
+	return  render(request,'group/edit.html',{'home':home,'chores':chores_home_doesnt_have})
+
+def group_chore_assoc(request,home_id,chore_id):
+	home=Home.objects.get(id=home_id).chores.add(chore_id)
+	return redirect('group_chores',home_id)
