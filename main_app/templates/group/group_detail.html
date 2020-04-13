@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="card">
+  <!-- add this single line below -->
+ 
+    <div class="card-content">
+    
+
+<span class="card-title">{{ home.name }}</span>
+      <p>Address: {{ home.address }}</p>
+       <a class="btn btn-primary" href="{% url 'group_update' home.id %}">edit home</a>
+     <a class="btn btn-primary" href="#">edit chroes</a>
+
+    </div>
+  <!-- and this following one as well -->
+
+</div>
+
+{% for profile in profiles %}
+<div calss="card">
+	 <div class="card-content">
+      <span class="card-title">{{ profile.user.username }}</span>
+     <a href="#">EDIT</a>
+    </div>
+
+</div>
+{% endfor %}
+
+{% endblock content %}
