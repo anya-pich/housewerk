@@ -10,7 +10,7 @@
 <span class="card-title">{{ home.name }}</span>
       <p>Address: {{ home.address }}</p>
        <a class="btn btn-primary" href="{% url 'group_update' home.id %}">edit home</a>
-     <a class="btn btn-primary" href="#">edit chroes</a>
+     <a class="btn btn-primary" href="{% url 'group_chores' home.id %}">edit chroes</a>
 
     </div>
   <!-- and this following one as well -->
@@ -21,7 +21,7 @@
 <div calss="card">
 	 <div class="card-content">
       <span class="card-title">{{ profile.user.username }}</span>
-     <a href="#">EDIT</a>
+     <a href="#">EDIT chroes</a>
     </div>
 
 </div>

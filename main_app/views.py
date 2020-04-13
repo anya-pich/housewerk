@@ -153,3 +153,9 @@ def group_update(request,home_id):
 	else:
 		form=HomeForm(instance=home)
 	return render(request,'group/create.html',{'form':form})
+
+# def members_detail(request,profile_id):
+# 	profile=Profile.objects.get(id=profile_id)
+# 	chores_profile_doesnt_have=Chore.objects.exclude(id__in=profile.chores.all().values_list('id'))
+# 	return render(request,'group/member/detail.html',{'profile':profile,'chores':chores_profile_doesnt_have})
+
