@@ -1,35 +1,36 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-  <div class="row">
-    <div class="col mb-4">
-      <div class="card h-100 p-3 shadow-sm">
-        <div class="card-body">
-          <h2 class="card-title mb-4 mt-3 text-warning">HouseWerk</h2>
-          <p class="card-text">We built this project to make it easier for households look after their homes together - with style.</p>
-          <p class="card-text">Using this responsive platform, housemates or families are able to set up a group for their home, add weekly chores, and track their progress online.</p>
-          <a href="https://github.com/anya-pich/housewerk/" class="card-link text-muted">See the project on GitHub</a>
+<body class="wallpaper-light">
+  {% include 'includes/navbar.html' %}
+  <main class="container py-5">
+    <div class="row">
+      <div class="col mb-4">
+        <div class="card h-100 p-3 shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title mb-4 mt-3 text-warning brand font-weight-bold">HouseWerk</h2>
+            <p class="card-text">We built this project to make it easier for households look after their homes together.</p>
+            <p class="card-text">Using this responsive platform, housemates or families are able to set up a group for their home, add weekly chores, and track their progress online.</p>
+            <a href="https://github.com/anya-pich/housewerk/" class="card-link text-muted">See the project on GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6  mb-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-header text-muted">
+            Tech Stack
+          </div>
+          <ul class="list-group list-group-flush text-secondary">
+            <li class="list-group-item">Bootstrap</li>
+            <li class="list-group-item">Django</li>
+            <li class="list-group-item">PostgreSQL</li>
+            <li class="list-group-item">Python</li>
+          </ul>
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-lg-4 col-md-6  mb-4">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-header text-muted">
-          Tech Stack
-        </div>
-        <ul class="list-group list-group-flush text-secondary">
-          <li class="list-group-item">Bootstrap, Font Awesome</li>
-          <li class="list-group-item">Django</li>
-          <li class="list-group-item">PostgreSQL</li>
-          <li class="list-group-item">Python</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <hr class="mb-5">
-
+  
+    <hr class="mb-5">
+  
     <div class="row align-items-center">
       <div class="col-md-3 d-flex justify-content-center">
         <img 
@@ -52,7 +53,7 @@
         </div>
       </div>
     </div>
-
+  
     <div class="row align-items-center flex-wrap-reverse">
       <div class="col">
         <div class="card h-100 my-4 shadow-sm">
@@ -75,7 +76,7 @@
         >
       </div>
     </div>
-
+  
     <div class="row align-items-center">
       <div class="col-md-3 d-flex justify-content-center">
         <img 
@@ -98,6 +99,8 @@
         </div>
       </div>
     </div>
+  </main>
 
-  
+  {% include 'includes/footer_solid.html' %}
+</body>
 {% endblock %}

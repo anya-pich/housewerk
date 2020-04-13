@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <h1>Create profile</h1>
-<form method="post" action="{% url 'new_member' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {{p_form.as_p}}
-  <input type="submit" class="btn" value="new_member">
-</form>
+<body class="wallpaper-bright">
+  <main class="container my-5">
+    <div class="jumbotron container shadow my-4 p-5 rounded">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <h1 class="display-4 text-muted mt-5 brand">Welcome to <span class="text-warning"><strong>HouseWerk</strong></span></h1>
+          <p class="lead text-muted">Helping households look after their homes together</p>
+          <form method="post" class="my-4" action="{% url 'new_member' %}">
+            {% csrf_token %}
+            {% include '../includes/form.html' with form=p_form %}
+            {% include '../includes/form.html' with form=form %}
+            <button type="submit" class="btn btn-warning px-5 text-white my-3">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% include 'includes/footer_clear.html' %} 
+</body>
 
 {% endblock content %}
+
+<!-- {{ form.as_p }}
+{{p_form.as_p}}
+<input type="submit" class="btn" value="new_member"> -->
+
+<!-- 
+  changes based on this:
+  https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html
+ -->
