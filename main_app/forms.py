@@ -10,4 +10,8 @@ class ProfileForm(ModelForm):
 	class Meta:
 		model=Profile
 		fields=['email']
-		
+
+class HomeForm(ModelForm):
+	class Meta:
+		model=Home
+		fields=['name','address']
