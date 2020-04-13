@@ -53,9 +53,11 @@ def profile_home(request):
 
 # CHORES
 
-# def chores_index(request):
-# 	chores = Chore.objects.all()
-# 	return render(request, 'chores/index.html', {'chores': chores})
+def chores_index(request):
+	chores = Chore.objects.all()
+	return render(request, 'chores/index.html', {'chores': chores})
+# class ChoreList(ListView):
+# 	model = Chore
 
 # def chores_detail(request):
 # 	return render(request, 'chores/detail.html')
