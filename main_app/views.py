@@ -55,69 +55,58 @@ def login(request):
 
 def chores_index(request):
 	chores = Chore.objects.all()
-	return render(request, 'chores/index.html', {'chores': chores})
+	return render(request, 'main_app/index.html', {'chores': chores})
 
-def new_chore(request):
-	if request.method == 'POST':
+# def new_chore(request):
+# 	if request.method == 'POST':
 		
-		form = ChoreForm(request.POST)
-		if form.is_valid():
+# 		form = ChoreForm(request.POST)
+# 		if form.is_valid():
 
-			chore = form.save()
-			print(chore.id)
-			return redirect('detail', chore.id)
-	else: 
-		form = ChoreForm()
-	context = {'form': form}
-	return render(request, 'chores/chore_form.html', context)
+# 			chore = form.save()
+# 			print(chore.id)
+# 			return redirect('chores/detail.html', chore.id)
+# 	else: 
+# 		form = ChoreForm()
+# 	context = {'form': form}
+# 	return render(request, 'chores/chore_form.html', context)
 
+class ChoreCreate(CreateView):
+	model = Chore
+	fields = '__all__'
 
-def chores_update(request, chore_id):
-	chore = Chore.objects.get(id =chore_id)
+class ChoreDetail(DetailView):
+	model = Chore
 
-	if request.method == 'POST':
-		form = ChoreForm(request.POST, instance = chore)
-		if form.is_valid():
-			chore = form.save()
-			return redirect('detail', chore.id)
-	else:
-		form = ChoreForm(instance = chore)
-		return render (request, 'chores/chore_form.html', {'form':form})
+class ChoreUpdate(CreateView):
+	model = Chore
+	fields = ['name', 'description']
 
-def chores_delete(request, chore_id):
-	Chore.objects.get(id = chore_id).delete()
-	return redirect('chores_index')
+class ChoreDelete(DeleteView):
+	model = Chore
+	success_url = '/chores/'
 
-# class ChoreDetail(DetailView):
-# 	model = Chore
-
-# class ChoreUpdate(CreateView):
-# 	model = Chore
-# 	fields = ['name', 'description']
-
-# class ChoreDelete(DeleteView):
-# 	model = Chore
-# 	success_url = '/chores/'
-
-# class ChoreList(ListView):
-# 	model = Chore
 
 # def chores_detail(request):
 # 	return render(request, 'chores/detail.html')
 
-# def chores_create(request):
-# 	return render(request, 'chores/add.html')
+# def chores_update(request, chore_id):
+# 	chore = Chore.objects.get(id =chore_id)
 
-# def chores_update(request):
-# 	return render(request, 'chores/edit.html')
+# 	if request.method == 'POST':
+# 		form = ChoreForm(request.POST, instance = chore)
+# 		if form.is_valid():
+# 			chore = form.save()
+# 			return redirect('chores_detail', chore.id)
+# 	else:
+# 		form = ChoreForm(instance = chore)
+# 		return render (request, 'chores/chore_form.html', {'form':form})
 
-# def chores_remove(request):
-# 	return render(request, 'chores/index.html')
 
-# def chores_detail(request, chore_id):
-# 	chore = Chore.objects.get(id = chore_id)
+# def chores_delete(request, chore_id):
+# 	Chore.objects.get(id = chore_id).delete()
+# 	return redirect('chores_index')
 
-# 	return render(request, )
 
 
 def new_member(request):
