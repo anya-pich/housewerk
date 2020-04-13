@@ -30,8 +30,8 @@ def group_index(request):
 def members_index(request):
   return render(request, 'group/index.html')
 
-def new_member(request):
-	return render(request, 'group/invite.html')
+# def new_member(request):
+# 	return render(request, 'group/invite.html')
 
 def members_detail(request):
 	return render(request, 'group/member/detail.html')
@@ -47,8 +47,8 @@ def members_remove(request):
 def profile_home(request):
 	return render(request, 'profile/home.html')
 
-# def (request):
-# 	return render(request, '.html')
+def login(request):
+	return render(request, 'registration/login.html')
 
 
 # CHORES
