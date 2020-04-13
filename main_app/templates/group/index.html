@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Group admin home</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio ex laboriosam id dolorem, alias minus debitis officiis vel quo, architecto obcaecati eveniet ad voluptatem dolorum dolore deserunt expedita quas repellendus.</p>
-    <a href="">Chores</a>
-    <a href="">People</a>
-    <a href="">My profile home</a>
+ <div class="card">
+  <!-- add this single line below -->
+ 
+    <div class="card-content">
+    {%   if home == None %}
+    <p>you are  not in any group want to create one?</p>
+   <a class="btn btn-primary" href="{% url 'new_group' %}">create group</a>
+	{% else %}
+ <a href="{% url 'group_detail'  home.id %}">
+<span class="card-title">{{ home.name }}</span>
+      <p>Address: {{ home.address }}</p>
+{% endif %}	
+    </div>
+  <!-- and this following one as well -->
+  </a>
+</div>
 {% endblock content %}
