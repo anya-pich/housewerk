@@ -101,9 +101,22 @@ def new_group(request):
 			home=form.save(commit=False)
 			home.manager=request.user.profile
 			home.save()
+			profile=request.user.profile
+			profile.home_id=home
+			profile.save()  #maybe have problem
 			return redirect('group_index')#TODO:adjust group_index
 	else:
 		form=HomeForm()
 	context={'form':form}
 	return render(request,'group/create.html',context)
 
+def group_invite(request):
+	profiles=Profile.objects.filter(home_id=None)
+	print(profiles)
+	return render(request,'group/invite.html',{'profiles':profiles})
+
+def group_invite_member(request,profile_id):
+	profile=Profile.objects.get(id=profile_id)
+	profile.home_id=request.user.profile.home_id
+	profile.save()
+	return  redirect('group_invite')
