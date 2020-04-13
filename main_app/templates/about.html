@@ -1,11 +1,103 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>About HouseWerk</h1>
-  <hr />
-  <p>Hire the HouseWerk crew!</p>
-  <hr />
-  <h2>Monica</h2>
-  <h2>Huang</h2>
-  <h2>Anya</h2>
+
+  <div class="row">
+    <div class="col mb-4">
+      <div class="card h-100 p-3 shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title mb-4 mt-3 text-warning">HouseWerk</h2>
+          <p class="card-text">We built this project to make it easier for households look after their homes together - with style.</p>
+          <p class="card-text">Using this responsive platform, housemates or families are able to set up a group for their home, add weekly chores, and track their progress online.</p>
+          <a href="https://github.com/anya-pich/housewerk/" class="card-link text-muted">See the project on GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-6  mb-4">
+      <div class="card h-100 text-center shadow-sm">
+        <div class="card-header text-muted">
+          Tech Stack
+        </div>
+        <ul class="list-group list-group-flush text-secondary">
+          <li class="list-group-item">Bootstrap, Font Awesome</li>
+          <li class="list-group-item">Django</li>
+          <li class="list-group-item">PostgreSQL</li>
+          <li class="list-group-item">Python</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mb-5">
+
+    <div class="row align-items-center">
+      <div class="col-md-3 d-flex justify-content-center">
+        <img 
+          class="img-thumbnail rounded-circle shadow-sm" 
+          alt="Monica Tadeo" 
+          src="../static/img/monica_tadeo.jpeg"
+        >
+      </div>
+      <div class="col">
+        <div class="card h-100 my-4 shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="card-title">Monica Tadeo</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer in San Francisco</h6>
+            <p class="card-text">Web developer with a science-dense background. I’m excited to work with a team who is inspired to create digital interfaces. Currently seeking opportunities to collaborate and discover more in web development. </p>
+            <a class="stretched-link" href="https://www.linkedin.com/in/monicatadeo/">
+              Let's connect!
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center flex-wrap-reverse">
+      <div class="col">
+        <div class="card h-100 my-4 shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="card-title">Canhua Huang</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Software Engineering Immersive at General Assembly in San Francisco</h6>
+            <p class="card-text">Computer science background. Full stack developer experience C++, Java, Javascript, Python MongoDB and MySql database. Big fans of video games. Love coding and  alway interested in learning new tools to solve problems.</p>
+            <a class="stretched-link" href="https://www.linkedin.com/in/canhua-huang/">
+              Let's connect!
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex justify-content-center">
+        <img 
+          class="img-thumbnail rounded-circle shadow-sm" 
+          alt="Canhua Huang" 
+          src="../static/img/canhua_huang.jpeg"
+        >
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-md-3 d-flex justify-content-center">
+        <img 
+          class="img-thumbnail rounded-circle shadow-sm" 
+          alt="Anna Pichugina" 
+          src="../static/img/anna_pichugina.jpeg"
+        >
+      </div>
+      <div class="col">
+        <div class="card h-100 my-4 shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="card-title">Anna Pichugina</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Full stack software engineer in San Francisco</h6>
+            <p class="card-text">Full stack software engineer with a background in architecture, an eye for usability and a knack for creative solutions. I’m driven by curiosity and happiest when learning and resolving problems. Bit of a penchant for elegant code. </p>
+            <a class="stretched-link" href="https://www.linkedin.com/in/anna-pich/">
+              Let's connect!
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
 {% endblock %}
