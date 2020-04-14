@@ -23,17 +23,17 @@
 		<!-- Chore cards -->
 
 		<hr mt-5>
-		{% if profile.chores.count %}
+		<!-- {% if user.profile.chores.count %}
 		<h5 class="text-muted my-4 brand">Things to do this week:</h5>
 			<div class="row">
-				{% for chore in profile.chores.all %}
+				{% for chore in user.profile.chores.all %}
 				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
 					<div class="card border-warning h-100">
 						<div class="card-header bg-warning">
 							<img src="https://randomuser.me/api/portraits/lego/4.jpg"
 								class="img-thumbnail float-right rounded-circle w-25" alt="...">
 							<h5 class="card-title text-white">{{ chore.name }}</h5>
-							<h6 class="card-subtitle text-white-50">{{ profile }}</h6>
+							<h6 class="card-subtitle text-white-50">{{ user|title }}</h6>
 						</div>
 						<div class="card-body text-secondary py-4">
 							{{ chore.description|linebreaks }}
@@ -49,15 +49,36 @@
 			</div>
 		{% else %}
 		<h5 class="text-muted my-4 brand">You're all done for this week!</h5>
-		{% endif %}
+		{% endif %} -->
 
-
-
-
-
-
-
-
+		
+			<h5 class="text-muted my-4 brand">Things you're doing this week:</h5>
+				<div class="row">
+					{% for chore in chores %}
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						<div class="card border-warning h-100">
+							<div class="card-header bg-warning">
+								<img src="https://randomuser.me/api/portraits/lego/4.jpg"
+									class="img-thumbnail float-right rounded-circle w-25" alt="...">
+								<h5 class="card-title text-white">{{ chore.name }}</h5>
+								<h6 class="card-subtitle text-white-50">{{ user|title }}</h6>
+							</div>
+							<div class="card-body text-secondary py-4">
+								{{ chore.description|linebreaks }}
+							</div>
+							<a href="chore/{{ chore.id }}/toggle" class="text-secondary text-decoration-none">
+								<div class="card-footer">
+									Mark as Complete
+								</div>
+							</a>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+	
+			<hr mt-5>
+			<h5 class="text-muted my-4 brand">This is what your housemates are working on:</h5>
+		
 			<div class="row">
 				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
 					<div class="card border-warning h-100">
@@ -168,7 +189,7 @@
 			</div>
 
 			<hr>
-			<h5 class="text-muted my-4 brand">These are all done:</h4>
+			<h5 class="text-muted my-4 brand">Yay! These chores are done:</h4>
 
 				<div class="row">
 					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
