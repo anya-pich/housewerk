@@ -240,7 +240,7 @@ def members_detail(request,profile_id,home_id):
 	home=Home.objects.get(id=home_id)
 	profile=Profile.objects.get(id=profile_id)
 	chores=Chore.objects.filter(id__in=home.chores.all().values_list('id'))
-	chores_in_profile=Chore.objects.filter(id__in=Schedule.objects.all().values_list('chore_id'))
+	chores_in_profile=Chore.objects.filter(id__in=Schedule.objects.filter(profile_id=profile_id).values_list('chore_id'))
 	return render(request,'group/member/detail.html',{'profile':profile,'chores':chores,'chores_in':chores_in_profile})
 
 def group_chores(request,home_id):
