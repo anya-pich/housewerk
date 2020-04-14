@@ -1,9 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Name of person</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio ex laboriosam id dolorem, alias minus debitis officiis vel quo, architecto obcaecati eveniet ad voluptatem dolorum dolore deserunt expedita quas repellendus.</p>
-    <a href="">Edit</a>
-    <a href="">Remove from group</a>
-    <a href="">Back to group</a>
+<h1>{{profile.user.username}}</h1>
+<div class="row">
+	<h3>chore in user</h3>
+  <div class="col s6">
+		{% if chores_in.count %}
+      {% for chore_in in chores_in%}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span >{{ chore_in.description }}</span> {{ chore_in.name }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+{% else %}
+      <h5>no chores in this user</h5>
+    {% endif %}
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col s6">
+	{% if chores.count %}
+      {% for chore in chores%}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span >{{ chore.description }}</span> {{ chore.name }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_member_chore' profile.id  chore.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>no chores</h5>
+    {% endif %}
+  </div>
+
+</div>
 {% endblock content %}
