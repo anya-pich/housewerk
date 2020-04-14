@@ -111,26 +111,45 @@ def create_group(request):
 
 def chores_index(request):
 	chores = Chore.objects.all()
-	return render(request, 'chores/index.html', {'chores': chores})
-# class ChoreList(ListView):
-# 	model = Chore
+	return render(request, 'main_app/index.html', {'chores': chores})
+
+
+class ChoreCreate(CreateView):
+	model = Chore
+	fields = '__all__'
+
+class ChoreDetail(DetailView):
+	model = Chore
+
+class ChoreUpdate(UpdateView):
+	model = Chore
+	fields = ['name', 'description']
+
+class ChoreDelete(DeleteView):
+	model = Chore
+	success_url = '/chores/'
+
 
 # def chores_detail(request):
 # 	return render(request, 'chores/detail.html')
 
-# def chores_create(request):
-# 	return render(request, 'chores/add.html')
+# def chores_update(request, chore_id):
+# 	chore = Chore.objects.get(id =chore_id)
 
-# def chores_update(request):
-# 	return render(request, 'chores/edit.html')
+# 	if request.method == 'POST':
+# 		form = ChoreForm(request.POST, instance = chore)
+# 		if form.is_valid():
+# 			chore = form.save()
+# 			return redirect('chores_detail', chore.id)
+# 	else:
+# 		form = ChoreForm(instance = chore)
+# 		return render (request, 'chores/chore_form.html', {'form':form})
 
-# def chores_remove(request):
-# 	return render(request, 'chores/index.html')
 
-# def chores_detail(request, chore_id):
-# 	chore = Chore.objects.get(id = chore_id)
+# def chores_delete(request, chore_id):
+# 	Chore.objects.get(id = chore_id).delete()
+# 	return redirect('chores_index')
 
-# 	return render(request, )
 
 
 def new_member(request):
@@ -215,3 +234,17 @@ def group_update(request,home_id):
 	else:
 		form=HomeForm(instance=home)
 	return render(request,'group/create.html',{'form':form})
+
+# def members_detail(request,profile_id):
+# 	profile=Profile.objects.get(id=profile_id)
+# 	chores_profile_doesnt_have=Chore.objects.exclude(id__in=profile.chores.all().values_list('id'))
+# 	return render(request,'group/member/detail.html',{'profile':profile,'chores':chores_profile_doesnt_have})
+
+def group_chores(request,home_id):
+	home=Home.objects.get(id=home_id)
+	chores_home_doesnt_have=Chore.objects.exclude(id__in=home.chores.all().values_list('id'))
+	return  render(request,'group/edit.html',{'home':home,'chores':chores_home_doesnt_have})
+
+def group_chore_assoc(request,home_id,chore_id):
+	home=Home.objects.get(id=home_id).chores.add(chore_id)
+	return redirect('group_chores',home_id)

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -8,8 +9,12 @@ from django.dispatch import receiver
 class Chore(models.Model):
 	name=models.CharField(max_length=50)
 	description=models.CharField(max_length=250)
+	
 	def __str__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('chores_detail', kwargs={'pk': self.id})
 
 class Profile(models.Model):
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -41,7 +46,7 @@ class Home(models.Model):
 
 class Schedule(models.Model):
 	profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
-	chroe=models.ForeignKey(Chore,on_delete=models.CASCADE)
+	chore=models.ForeignKey(Chore,on_delete=models.CASCADE)
 	time=models.DurationField()
 	Mark=models.BooleanField(default=False)
 
