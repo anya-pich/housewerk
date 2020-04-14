@@ -57,19 +57,6 @@ def chores_index(request):
 	chores = Chore.objects.all()
 	return render(request, 'main_app/index.html', {'chores': chores})
 
-# def new_chore(request):
-# 	if request.method == 'POST':
-		
-# 		form = ChoreForm(request.POST)
-# 		if form.is_valid():
-
-# 			chore = form.save()
-# 			print(chore.id)
-# 			return redirect('chores/detail.html', chore.id)
-# 	else: 
-# 		form = ChoreForm()
-# 	context = {'form': form}
-# 	return render(request, 'chores/chore_form.html', context)
 
 class ChoreCreate(CreateView):
 	model = Chore
@@ -78,7 +65,7 @@ class ChoreCreate(CreateView):
 class ChoreDetail(DetailView):
 	model = Chore
 
-class ChoreUpdate(CreateView):
+class ChoreUpdate(UpdateView):
 	model = Chore
 	fields = ['name', 'description']
 
