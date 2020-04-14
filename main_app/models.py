@@ -9,10 +9,8 @@ from django.dispatch import receiver
 class Chore(models.Model):
 	name=models.CharField(max_length=50)
 	description=models.CharField(max_length=250)
-	
 	def __str__(self):
 		return self.name
-
 	def get_absolute_url(self):
 		return reverse('chores_detail', kwargs={'pk': self.id})
 

@@ -47,7 +47,12 @@ def members_remove(request):
 # PROFILE
 
 def profile_home(request):
-	return render(request, 'profile/home.html', {'nav_home': 'active'})
+	chores = Chore.objects.filter(profile=request.user.pk)
+	context = {
+		'chores': chores,
+		'nav_home': 'active'
+	}
+	return render(request, 'profile/home.html', context)
 
 def profile_view(request):
 	return render(request, 'profile/view.html', {'nav_profile': 'active'})
@@ -108,6 +113,11 @@ def create_group(request):
 	context={'form':form}
 	return render(request,'registration/new_group.html',context)
 
+def toggle_chore(request, pk):
+	chore = Chore.objects.get(id=pk)
+	print(chore)
+
+	return redirect('profile_home')
 # CHORES
 
 def chores_index(request):

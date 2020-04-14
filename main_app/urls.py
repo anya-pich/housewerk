@@ -45,6 +45,8 @@ urlpatterns = [
     path('chores/<int:pk>/update', views.ChoreUpdate.as_view(), name ='chores_update'),
     path('chores/<int:pk>/delete', views.ChoreDelete. as_view(), name ='chores_delete'),
 
+    path('chore/<int:pk>/toggle', views.toggle_chore, name='toggle_chore'),
+
     # PROFILE LOGIN URLs AUTOMATICALLY CREATED BY DJANGO
     # accounts/ login/ [name='login']
     # accounts/ logout/ [name='logout']
