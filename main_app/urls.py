@@ -20,14 +20,16 @@ urlpatterns = [
     path('group/members', views.members_index, name ='members_index'),
     path('group/member/new/', views.new_member, name ='new_member'),
    # path('group/member/<int:member_id>/', views.members_detail, name ='detail'),
-
+# <<<<<<< HEAD
     path('group/member/<int:profile_id>/<int:home_id>', views.members_detail, name ='member_detail'),
     path('group/member/<int:member_id/edit/', views.members_edit, name = 'members_edit'),
     path('group/member/<int:member_id/remove', views.members_remove, name ='members_remove'),
     path('group/member/assoc_chore/<int:profile_id>/<int:chore_id>',views.assoc_member_chore,name='assoc_member_chore'),
-
-
-
+# =======
+    # path('group/member/<int:profile_id>/', views.members_detail, name ='member_detail'),
+    # path('group/member/<int:member_id>/edit/', views.members_edit, name = 'members_edit'),
+    # path('group/member/<int:member_id>/remove', views.members_remove, name ='members_remove'),
+# >>>>>>> submaster
 
     # PROFILE
     path('profile/', views.profile_home, name='profile_home'),
