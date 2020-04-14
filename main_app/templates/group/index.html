@@ -73,33 +73,25 @@
     {% for chore in home.chores.all %}
 
     <div class="col mb-4">
-      <div class="card h-100" style="width: 18rem;">
+      <div class="card h-100">
+        <div class="card-header bg-warning">
+          <h5 class="card-title text-white">{{ chore|title }}</h5>
+					<h6 class="card-subtitle text-white-50">Weekly</h6>
+        </div>
         <div class="card-body p-4">
-          <h5 class="card-title">{{ chore|title }}</h5>
-          <h6 class="card-subtitle text-muted">Weekly</h6>
           <p class="card-text py-4">{{ chore.description }}</p>
         </div>
         {% if home.manager == request.user.profile %}
           <div class="card-footer px-4 text-center">
-            <a href="/group/{{ home.pk }}/chore/{{ chore.id }}/edit" class="btn btn-warning text-white px-3">Edit</a>
-            <a href="/group/{{ home.pk }}/chore/{{ chore.id }}/remove" class="btn btn-danger text-white px-3">Delete</a>
+            <a href="{% url 'chores_update' chore.id %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'chores_delete' chore.id %}" class="btn btn-danger">Delete</a>
           </div>
         {% endif %}
       </div>
     </div>
-<!--     
-      <div class="card p-4 h-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ chore|title }}</h5>
-          <p class="card-text mt-4">{{ chore.description }}</p>
-        </div>
-      </div>
-    </div> -->
     
     {% endfor %}
   </div>
-
 </div>
-
 
 {% endblock %}

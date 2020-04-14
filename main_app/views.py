@@ -133,22 +133,22 @@ class ChoreDelete(DeleteView):
 # def chores_detail(request):
 # 	return render(request, 'chores/detail.html')
 
-# def chores_update(request, chore_id):
-# 	chore = Chore.objects.get(id =chore_id)
+def chores_update(request, chore_id):
+	chore = Chore.objects.get(id =chore_id)
 
-# 	if request.method == 'POST':
-# 		form = ChoreForm(request.POST, instance = chore)
-# 		if form.is_valid():
-# 			chore = form.save()
-# 			return redirect('chores_detail', chore.id)
-# 	else:
-# 		form = ChoreForm(instance = chore)
-# 		return render (request, 'chores/chore_form.html', {'form':form})
+	if request.method == 'POST':
+		form = ChoreForm(request.POST, instance = chore)
+		if form.is_valid():
+			chore = form.save()
+			return redirect('chores_detail', chore.id)
+	else:
+		form = ChoreForm(instance = chore)
+		return render (request, 'chores/chore_form.html', {'form':form})
 
 
-# def chores_delete(request, chore_id):
-# 	Chore.objects.get(id = chore_id).delete()
-# 	return redirect('chores_index')
+def chores_delete(request, chore_id):
+	Chore.objects.get(id = chore_id).delete()
+	return redirect('chores_index')
 
 
 
