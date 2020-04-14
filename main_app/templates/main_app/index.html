@@ -4,7 +4,7 @@
 
 <h3 class="text-muted my-4 brand">All Chores:</h3> 
 <body class="wallpaper-light">
-
+<a href="{% url 'chores_create' %}" class="btn btn-success">Add New Chore</a>
 {% for chore in chores %}
 
 <main class="container py-5">
@@ -27,9 +27,6 @@
                             <a href="{% url 'chores_delete' chore.id %}" class="btn btn-danger">Delete</a>
                           </div>
 
-                          <div class="float-left">
-                            <a href="#" class="btn btn-success">Add</a>
-                          </div>
 
                     </div>
                 </div>
@@ -38,6 +35,10 @@
 </main>
 
 </body>
+
+
+
+
 
 {% endfor %}
 {% include 'includes/footer_solid.html' %}
