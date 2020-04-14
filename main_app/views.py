@@ -212,7 +212,7 @@ def group_index(request):
 		return render(request,'group/index.html',{'home':home})
 	else:
 		home=Home.objects.get(id=profile.home_id.id)
-		chores=Chore.objects.get(id=profile.home_id.id)
+		chores=Chore.objects.filter(id=profile.home_id.id)
 		return render(request,'group/index.html',{'home':home, 'nav_group': 'active'})
 
 def  group_detail(request,home_id):
