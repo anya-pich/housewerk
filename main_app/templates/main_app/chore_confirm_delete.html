@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'includes/navbar.html' %}
-
+<body class="wallpaper-light">
   <h1>Delete Chore</h1>
 
   <h4>Are you sure you want to delete<span class="teal-text">{{ object.name }}</span>?</h4>
@@ -9,8 +9,9 @@
   <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'chores_detail' object.id %}">Cancel</a>
+    <a href="{% url 'chores_index' %}">Cancel</a>
   </form>
+</body>
 
  {% include 'includes/footer_solid.html' %}
 {% endblock %} 
