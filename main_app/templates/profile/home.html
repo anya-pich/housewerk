@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+{% block title %} - Profile Home{% endblock %}
+{% block content %}
+
+	<main class="container py-5">
+		<div class="row my-5">
+			<div class="col-md-3 text-center">
+				<span class="fa-stack fa-5x">
+					<i class="fa fa-circle fa-stack-2x text-warning"></i>
+					<i class="fas fa-home fa-stack-1x text-white"></i>
+				</span>
+			</div>
+			<div class="col">
+				<h1 class="brand text-muted mb-3">Welcome to <strong class="text-warning">{{ user.profile.home_id }}</strong>,
+					{{ user.username|title }}</h1>
+				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio ex laboriosam id dolorem, alias minus debitis
+					officiis vel quo, architecto obcaecati eveniet ad voluptatem dolorum dolore deserunt expedita quas
+					repellendus.</p>
+					<a href="{% url 'group_index' %}" class="btn btn-warning text-white px-3">Group Page</a>
+			</div>
+		</div>
+
+		<!-- Chore cards -->
+
+		<hr mt-5>
+		<!-- {% if user.profile.chores.count %}
+		<h5 class="text-muted my-4 brand">Things to do this week:</h5>
+			<div class="row">
+				{% for chore in user.profile.chores.all %}
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+					<div class="card border-warning h-100">
+						<div class="card-header bg-warning">
+							<img src="https://randomuser.me/api/portraits/lego/4.jpg"
+								class="img-thumbnail float-right rounded-circle w-25" alt="...">
+							<h5 class="card-title text-white">{{ chore.name }}</h5>
+							<h6 class="card-subtitle text-white-50">{{ user|title }}</h6>
+						</div>
+						<div class="card-body text-secondary py-4">
+							{{ chore.description|linebreaks }}
+						</div>
+						<a href="#" class="text-secondary text-decoration-none">
+							<div class="card-footer">
+								Mark as Complete
+							</div>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		{% else %}
+		<h5 class="text-muted my-4 brand">You're all done for this week!</h5>
+		{% endif %} -->
+
+		
+			<h5 class="text-muted my-4 brand">Things you're doing this week:</h5>
+				<div class="row">
+					{% for chore in chores %}
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						<div class="card border-warning h-100">
+							<div class="card-header bg-warning">
+								<img src="https://randomuser.me/api/portraits/lego/4.jpg"
+									class="img-thumbnail float-right rounded-circle w-25" alt="...">
+								<h5 class="card-title text-white">{{ chore.name }}</h5>
+								<h6 class="card-subtitle text-white-50">{{ user|title }}</h6>
+							</div>
+							<div class="card-body text-secondary py-4">
+								{{ chore.description|linebreaks }}
+							</div>
+							<a href="chore/{{ chore.id }}/toggle" class="text-secondary text-decoration-none">
+								<div class="card-footer">
+									Mark as Complete
+								</div>
+							</a>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+	
+			<hr mt-5>
+			<h5 class="text-muted my-4 brand">This is what your housemates are working on:</h5>
+		
+			<div class="row">
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+					<div class="card border-warning h-100">
+						<div class="card-header bg-warning">
+							<img src="https://randomuser.me/api/portraits/men/32.jpg"
+								class="img-thumbnail float-right rounded-circle w-25" alt="...">
+							<h5 class="card-title text-white">Mail</h5>
+							<h6 class="card-subtitle text-white-50">Jon</h6>
+						</div>
+						<div class="card-body">
+							<ul class="card-text text-secondary ml-n3">
+								<li>Get mail & parcels</li>
+								<li>Recycle junk mail</li>
+								<li>RTS other mail</li>
+							</ul>
+						</div>
+						<ul class="list-group list-group-flush text-secondary">
+							<li class="list-group-item p-0"></li>
+							<li class="list-group-item">
+								Monday / Tuesday
+								<i class="fas fa-check float-right mt-1"></i>
+							</li>
+							<li class="list-group-item">
+								Wednesday / Thursday
+								<i class="fas fa-check float-right mt-1"></i>
+							</li>
+							<li class="list-group-item">
+								Fri / Sat / Sun
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+					<div class="card border-warning h-100">
+						<div class="card-header bg-warning">
+							<img src="https://randomuser.me/api/portraits/women/42.jpg"
+								class="img-thumbnail float-right rounded-circle w-25" alt="...">
+							<h5 class="card-title text-white">Trash</h5>
+							<h6 class="card-subtitle text-white-50">Van Nessa</h6>
+						</div>
+						<div class="card-body">
+							<ul class="card-text text-secondary ml-n3">
+								<li>Kitchen, compost & recycling bins</li>
+								<li>Bathroom bin</li>
+								<li>Put in new bin liners</li>
+							</ul>
+						</div>
+						<ul class="list-group list-group-flush text-secondary">
+							<li class="list-group-item p-0"></li>
+							<li class="list-group-item">
+								Monday / Tuesday
+								<i class="fas fa-check float-right mt-1"></i>
+							</li>
+							<li class="list-group-item">
+								Wednesday / Thursday
+								<i class="fas fa-check float-right mt-1"></i>
+							</li>
+							<li class="list-group-item">
+								Fri / Sat / Sun
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+					<div class="card border-warning h-100">
+						<div class="card-header bg-warning">
+							<img src="https://randomuser.me/api/portraits/men/58.jpg"
+								class="img-thumbnail float-right rounded-circle w-25" alt="...">
+							<h5 class="card-title text-white">Laundry</h5>
+							<h6 class="card-subtitle text-white-50">Kit</h6>
+						</div>
+						<div class="card-body">
+							<ul class="card-text text-secondary ml-n3">
+								<li>Kitchen towels</li>
+								<li>Bath mat</li>
+								<li>Bathroom towel</li>
+							</ul>
+						</div>
+						<a href="#" class="text-secondary text-decoration-none">
+							<div class="card-footer">
+								Mark as Complete
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+					<div class="card border-warning h-100">
+						<div class="card-header bg-warning">
+							<img src="https://randomuser.me/api/portraits/women/42.jpg"
+								class="img-thumbnail float-right rounded-circle w-25" alt="...">
+							<h5 class="card-title text-white">Floors</h5>
+							<h6 class="card-subtitle text-white-50">Van Nessa</h6>
+						</div>
+						<div class="card-body">
+							<p class="card-text text-secondary">Some quick example text to build on the card title and make up the
+								bulk of the card's content.</p>
+						</div>
+						<a href="#" class="text-secondary text-decoration-none">
+							<div class="card-footer">
+								Mark as Complete
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<h5 class="text-muted my-4 brand">Yay! These chores are done:</h4>
+
+				<div class="row">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						<div class="card border-warning h-100">
+							<div class="card-header bg-warning">
+								<img
+									src="https://images.unsplash.com/photo-1564906819572-e183bba848c3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300"
+									class="img-thumbnail float-right rounded-circle w-25" alt="...">
+								<h5 class="card-title text-white">Trash</h5>
+								<h6 class="card-subtitle text-white-50">Van Nessa</h6>
+							</div>
+							<div class="card-body">
+								<p class="card-text text-secondary">Some quick example text to build on the card title and make up the
+									bulk of the card's content.</p>
+							</div>
+							<div class="card-footer bg-warning text-white">
+								<div class="float-left">
+									<p class="mb-n1">Completed on Friday</p>
+									<a href="#" class="text-white-50">Mark as incomplete</a>
+								</div>
+								<div class="float-right m-2">
+									<i class="fas fa-check fa-2x"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						<div class="card border-warning h-100">
+							<div class="card-header bg-warning">
+								<img
+									src="https://images.unsplash.com/photo-1564906819572-e183bba848c3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300"
+									class="img-thumbnail float-right rounded-circle w-25" alt="...">
+								<h5 class="card-title text-white">Trash</h5>
+								<h6 class="card-subtitle text-white-50">Van Nessa</h6>
+							</div>
+							<div class="card-body">
+								<p class="card-text text-secondary">Some quick example text to build on the card title and make up the
+									bulk of the card's content.</p>
+							</div>
+							<div class="card-footer bg-warning text-white">
+								<div class="float-left">
+									<p class="mb-n1">Completed on Friday</p>
+									<a href="#" class="text-white-50">Mark as incomplete</a>
+								</div>
+								<div class="float-right m-2">
+									<i class="fas fa-check fa-2x"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+						<div class="card border-warning h-100">
+							<div class="card-header bg-warning">
+								<img
+									src="https://images.unsplash.com/photo-1564906819572-e183bba848c3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=300"
+									class="img-thumbnail float-right rounded-circle w-25" alt="...">
+								<h5 class="card-title text-white">Trash</h5>
+								<h6 class="card-subtitle text-white-50">Van Nessa</h6>
+							</div>
+							<div class="card-body">
+								<p class="card-text text-secondary">Some quick example text to build on the card title and make up the
+									bulk of the card's content.</p>
+							</div>
+							<div class="card-footer bg-warning text-white">
+								<div class="float-left">
+									<p class="mb-n1">Completed on Friday</p>
+									<a href="#" class="text-white-50">Mark as incomplete</a>
+								</div>
+								<div class="float-right m-2">
+									<i class="fas fa-check fa-2x"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	</main>
+	
+{% endblock content %}

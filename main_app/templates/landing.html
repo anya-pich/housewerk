@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block background %}wallpaper-bright{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}transparent{% endblock %}
+{% block content %}
+  
+  <main class="container py-5 text-center">
+      <div class="jumbotron shadow my-4 p-5 rounded">
+          <h1 class="display-4 text-muted mt-5 brand">Welcome to <span class="text-warning"><strong>HouseWerk</strong></span></h1>
+          <p class="lead text-muted">Helping households look after their homes together</p>
+          <span class="fa-stack fa-5x my-5">
+              <i class="fa fa-circle fa-stack-2x text-warning"></i>
+              <i class="fas fa-home fa-stack-1x text-white"></i>
+          </span>
+          <p class="lead text-muted">Create a new group to get started or join an existing group:</p>
+          <div class="row row-cols-3 my-4">
+              <div class="col"><a class="btn btn-block btn-secondary" href="{% url 'about' %}" role="button">Learn more</a></div>
+              <div class="col"><a class="btn behind-jumbo btn-block btn-warning text-white" href="{% url 'login' %}" role="button">Log in</a></div>
+              <div class="col"><a class="btn behind-jumbo btn-block btn-warning text-white" href="{% url 'signup' %}" role="button">Sign Up</a></div>
+          </div>
+      </div>
+  </main>
+  
+{% endblock content %}

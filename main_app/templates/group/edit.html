@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-muted my-4 brand">{{home.name}}</h1>
+
+<div class="col-md-4">
+
+    {% if home.chores.count %}
+      {% for chore in home.chores.all %}
+
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+                <div class="card-header bg-warning">
+                  <h5 class="card-title text-white">{{ chore.name }}</h5>
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-secondary">{{ chore.description }}</p>
+                </div>
+          </div>
+        </div>
+
+            
+
+
+      {% endfor %}
+    {% else %}
+      <h5>No Chores Associated</h5>
+    {% endif %}
+  </div>
+
+</div>
+<br>
+
+<div class="col-md-4">
+    <h3 class="text-muted my-4 brand">Chores Not Associated:</h3>
+    {% if chores.count %}
+      {% for chore in chores.all %}
+
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+                <div class="card-header bg-warning">
+                  <h5 class="card-title text-white">{{ chore.name }}</h5>
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-secondary">{{ chore.description }}</p>
+                </div>
+          </div>
+
+
+          <div class="card-action">
+            <form action="{% url 'group_chore_assoc' home.id chore.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{home.name}} Already Has All Chores Available</h5>
+    {% endif %}
+  </div>
+{% endblock content %}

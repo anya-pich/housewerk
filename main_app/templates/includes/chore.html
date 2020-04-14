@@ -1,0 +1,38 @@
+{% for chore in chore_list %}
+
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
+  <div class="card border-warning h-100">
+      <div class="card-header bg-warning">
+          <img 
+          src="{{ user.photo }}" 
+          class="img-thumbnail float-right rounded-circle w-25" 
+          alt="{{ user.username }}"
+          >
+          <h5 class="card-title text-white">Mail</h5>
+          <h6 class="card-subtitle text-white-50">{{ user.username }}</h6>
+      </div>
+      <div class="card-body">
+          <ul class="card-text text-secondary ml-n3">
+              <li>Get mail & parcels</li>
+              <li>Recycle junk mail</li>
+              <li>RTS other mail</li>
+          </ul>
+      </div>
+      <ul class="list-group list-group-flush text-secondary">
+          <li class="list-group-item p-0"></li>
+          <li class="list-group-item">
+              Monday / Tuesday
+              <i class="fas fa-check float-right mt-1"></i>
+          </li>
+          <li class="list-group-item">
+              Wednesday / Thursday
+              <i class="fas fa-check float-right mt-1"></i>
+          </li>
+          <li class="list-group-item">
+              Fri / Sat / Sun
+          </li>
+      </ul>
+  </div>
+</div>
+
+{% endfor %}
