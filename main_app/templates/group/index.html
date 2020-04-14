@@ -18,7 +18,8 @@
         repellendus.</p>
       {% if home.manager == request.user.profile %}
         <a href="/group/invite" class="btn btn-warning text-white px-3">Invite Members</a>
-        <a href="#" class="btn btn-warning text-white px-3">Add Chores</a>
+        <a href="{% url 'group_chores' home.id %}" class="btn btn-warning text-white px-3">Assoc Chores</a>
+        <a href="{% url 'chores_create'%}" class="btn btn-warning text-white px-3">Add Chores</a>
       {% endif %}
     </div>
   </div>
@@ -53,7 +54,8 @@
         </div>
         {% if home.manager == request.user.profile %}
           <div class="card-footer px-4 text-center">
-            <a href="/group/{{ home.pk }}/member/{{ profile.id }}/edit" class="btn btn-warning text-white px-3">Edit</a>
+
+             <a href="{% url 'member_detail' profile.id home.id  %}" class="btn btn-warning text-white px-3">Edit</a>
             <a href="/group/{{ home.pk }}/member/{{ profile.id }}/remove" class="btn btn-danger text-white px-3">Delete</a>
           </div>
         {% endif %}
