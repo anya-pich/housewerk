@@ -56,14 +56,11 @@
         </div>
         {% if home.manager == request.user.profile %}
           <div class="card-footer px-4 text-center">
-<<<<<<< HEAD
+
             <a href="{% url 'profile_edit' %}" class="btn btn-warning text-white px-3">Edit</a>
             <a href="{% url 'profile_delete' user.id %}" class="btn btn-danger text-white px-3">Delete</a>
-=======
 
-             <a href="{% url 'member_detail' profile.id home.id  %}" class="btn btn-warning text-white px-3">Edit</a>
-            <a href="/group/{{ home.pk }}/member/{{ profile.id }}/remove" class="btn btn-danger text-white px-3">Delete</a>
->>>>>>> submaster
+
           </div>
         {% endif %}
       </div>
