@@ -89,8 +89,8 @@
         </div>
         {% if home.manager == request.user.profile %}
           <div class="card-footer px-4 text-center">
-            <a href="{% url 'chores_update' chore.id %}" class="btn btn-warning">Edit</a>
-            <a href="{% url 'chores_delete' chore.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'chores_update' chore.id %}" class="btn btn-warning text-white px-3">Edit</a>
+            <a href="{% url 'chores_delete' chore.id %}" class="btn btn-danger text-white px-3">Delete</a>
           </div>
         {% endif %}
       </div>
