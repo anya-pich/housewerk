@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 # Class-Based Views
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from datetime import timedelta
 
 
 # Import forms after they're created
@@ -194,7 +195,7 @@ def new_group(request):
 
 def group_invite(request):
 	profiles=Profile.objects.filter(home_id=None)
-	print(profiles)
+	#print(profiles)
 	return render(request,'group/invite.html',{'profiles':profiles})
 
 def group_invite_member(request,profile_id):
@@ -205,7 +206,7 @@ def group_invite_member(request,profile_id):
 
 def group_index(request):
 	profile=request.user.profile
-	print(profile.home_id)
+	#print(profile.home_id)
 	if profile.home_id==None:
 		home=None
 		return render(request,'group/index.html',{'home':home})
@@ -219,7 +220,7 @@ def  group_detail(request,home_id):
 		#return redirect(request,'profile_home')
 		return render(request,'profile/home.html')
 	else:
-		print('here')
+		#print('here')
 		home=Home.objects.get(id=home_id)
 		profiles=Profile.objects.filter(home_id=home_id)
 		return render(request,'group/group_detail.html',{'home':home,'profiles':profiles})
@@ -235,10 +236,12 @@ def group_update(request,home_id):
 		form=HomeForm(instance=home)
 	return render(request,'group/create.html',{'form':form})
 
-# def members_detail(request,profile_id):
-# 	profile=Profile.objects.get(id=profile_id)
-# 	chores_profile_doesnt_have=Chore.objects.exclude(id__in=profile.chores.all().values_list('id'))
-# 	return render(request,'group/member/detail.html',{'profile':profile,'chores':chores_profile_doesnt_have})
+def members_detail(request,profile_id,home_id):
+	home=Home.objects.get(id=home_id)
+	profile=Profile.objects.get(id=profile_id)
+	chores=Chore.objects.filter(id__in=home.chores.all().values_list('id'))
+	chores_in_profile=Chore.objects.filter(id__in=Schedule.objects.all().values_list('chore_id'))
+	return render(request,'group/member/detail.html',{'profile':profile,'chores':chores,'chores_in':chores_in_profile})
 
 def group_chores(request,home_id):
 	home=Home.objects.get(id=home_id)
@@ -248,3 +251,10 @@ def group_chores(request,home_id):
 def group_chore_assoc(request,home_id,chore_id):
 	home=Home.objects.get(id=home_id).chores.add(chore_id)
 	return redirect('group_chores',home_id)
+
+def assoc_member_chore(request,profile_id,chore_id):
+	print('assoc_member_chore function')
+	profile=Profile.objects.get(id=profile_id)
+	chore=Chore.objects.get(id=chore_id)
+	Schedule.objects.create(profile=profile,chore=chore,time=timedelta(days=7))
+	return redirect('member_detail',profile_id,profile.home_id.id)
