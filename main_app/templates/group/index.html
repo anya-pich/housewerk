@@ -1,20 +1,105 @@
 {% extends 'base.html' %}
-
+{% block title %} - My Group{% endblock %}
 {% block content %}
- <div class="card">
-  <!-- add this single line below -->
- 
-    <div class="card-content">
-    {%   if home == None %}
-    <p>you are  not in any group want to create one?</p>
-   <a class="btn btn-primary" href="{% url 'new_group' %}">create group</a>
-	{% else %}
- <a href="{% url 'group_detail'  home.id %}">
-<span class="card-title">{{ home.name }}</span>
-      <p>Address: {{ home.address }}</p>
-{% endif %}	
+
+<div class="container py-5">
+
+  <div class="row my-5">
+    <div class="col-md-3 text-center">
+      <span class="fa-stack fa-5x">
+        <i class="fa fa-circle fa-stack-2x text-warning"></i>
+        <i class="fas fa-home fa-stack-1x text-white"></i>
+      </span>
     </div>
-  <!-- and this following one as well -->
-  </a>
+    <div class="col">
+      <h1 class="brand text-muted mb-3"><strong class="text-warning">{{ user.profile.home_id }}</strong> group page</h1>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio ex laboriosam id dolorem, alias minus debitis
+        officiis vel quo, architecto obcaecati eveniet ad voluptatem dolorum dolore deserunt expedita quas
+        repellendus.</p>
+      {% if home.manager == request.user.profile %}
+        <a href="/group/invite" class="btn btn-warning text-white px-3">Invite Members</a>
+        <a href="#" class="btn btn-warning text-white px-3">Add Chores</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <div>
+    <h5 class="text-muted my-4 brand">Group members:</h5>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for profile in home.profile_set.all %}
+
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body p-4">
+          <img 
+            src="https://randomuser.me/api/portraits/lego/4.jpg" 
+            class="mr-3 img-thumbnail rounded-circle shadow-sm mx-auto d-block" 
+            alt="profile photo"
+            style="max-height: 10rem;"
+          >
+          <hr class="my-4">
+          <h5 class="card-title">{{ profile|title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ profile.user.first_name | title }} {{ profile.user.last_name | title }}
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ profile.user.email}}
+          </h6>
+          <p class="card-text mt-4">{% lorem 30 w random %}</p>
+        </div>
+        {% if home.manager == request.user.profile %}
+          <div class="card-footer px-4 text-center">
+            <a href="/group/{{ home.pk }}/member/{{ profile.id }}/edit" class="btn btn-warning text-white px-3">Edit</a>
+            <a href="/group/{{ home.pk }}/member/{{ profile.id }}/remove" class="btn btn-danger text-white px-3">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    
+    {% endfor %}
+  </div>
+
+  <hr class="my-5">
+
+  <div>
+    <h5 class="text-muted my-4 brand">Group chores:</h5>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for chore in home.chores.all %}
+
+    <div class="col mb-4">
+      <div class="card h-100" style="width: 18rem;">
+        <div class="card-body p-4">
+          <h5 class="card-title">{{ chore|title }}</h5>
+          <h6 class="card-subtitle text-muted">Weekly</h6>
+          <p class="card-text py-4">{{ chore.description }}</p>
+        </div>
+        {% if home.manager == request.user.profile %}
+          <div class="card-footer px-4 text-center">
+            <a href="/group/{{ home.pk }}/chore/{{ chore.id }}/edit" class="btn btn-warning text-white px-3">Edit</a>
+            <a href="/group/{{ home.pk }}/chore/{{ chore.id }}/remove" class="btn btn-danger text-white px-3">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+<!--     
+      <div class="card p-4 h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ chore|title }}</h5>
+          <p class="card-text mt-4">{{ chore.description }}</p>
+        </div>
+      </div>
+    </div> -->
+    
+    {% endfor %}
+  </div>
+
 </div>
-{% endblock content %}
+
+
+{% endblock %}

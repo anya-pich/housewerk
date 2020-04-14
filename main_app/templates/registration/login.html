@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
+{% block title %} - Log In{% endblock %}
+{% block background %}wallpaper-bright{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}transparent{% endblock %}
 {% block content %}
 
-<h1>Log In</h1>
-<!-- Add the login form -->
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn btn-outline-primary btn-light" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
-</form>
-{% endblock %}
+  <main class="container my-5">
+    <div class="jumbotron container shadow my-4 p-5 rounded">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto my-4">
+          <a href="{% url 'home' %}">
+            <h1 class="display-4 text-warning my-5 brand"><strong>HouseWerk</strong></h1>
+          </a>
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {% include '../includes/form.html' with form=form %}
+            <input type="submit" class="btn btn-warning px-5 text-white my-3" value="Log In">
+            <input type="hidden" name="next" value="{{ next }}">
+            <a class="btn px-5 ml-2 btn-secondary text-white" href="{% url 'signup' %}" role="button">Sign Up</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

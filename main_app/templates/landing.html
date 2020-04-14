@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block background %}wallpaper-bright{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}transparent{% endblock %}
 {% block content %}
-
-<body class="wallpaper-bright">
   
   <main class="container py-5 text-center">
       <div class="jumbotron shadow my-4 p-5 rounded">
@@ -15,12 +17,9 @@
           <div class="row row-cols-3 my-4">
               <div class="col"><a class="btn btn-block btn-secondary" href="{% url 'about' %}" role="button">Learn more</a></div>
               <div class="col"><a class="btn behind-jumbo btn-block btn-warning text-white" href="{% url 'login' %}" role="button">Log in</a></div>
-              <div class="col"><a class="btn behind-jumbo btn-block btn-warning text-white" href="{% url 'new_member' %}" role="button">Sign up</a></div>
+              <div class="col"><a class="btn behind-jumbo btn-block btn-warning text-white" href="{% url 'signup' %}" role="button">Sign Up</a></div>
           </div>
       </div>
   </main>
   
-  {% include 'includes/footer_clear.html' %} 
-</body>
-
 {% endblock content %}
