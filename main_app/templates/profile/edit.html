@@ -1,8 +1,31 @@
 {% extends 'base.html' %}
+{% block title %} - My Profile{% endblock %}
 {% block content %}
 
-
-
-
+  <main class="container d-flex justify-content-center my-5">
+    <div class="row align-items-center">
+      <div class="col-md-3 d-flex justify-content-center">
+        <img 
+          class="img-thumbnail rounded-circle shadow-sm" 
+          alt="profile photo" 
+          src="https://randomuser.me/api/portraits/lego/4.jpg"
+        >
+      </div>
+      <div class="col">
+        <div class="card h-100 my-4 shadow-sm">
+          <div class="card-body p-5">
+            <p class="lead text-muted">User Profile</p>
+            <hr>
+            <form method="post" class="my-4">
+              {% csrf_token %}
+              {% include '../includes/form.html' with form=form %}
+              <button type="submit" class="btn btn-warning px-5 text-white my-3">Submit changes</button>
+              <a class="btn px-5 ml-2 btn-secondary text-white" href="{% url 'profile_view' %}" role="button">Cancel</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
 {% endblock %}

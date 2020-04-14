@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} - Join Group{% endblock %}
+{% block background %}wallpaper-bright{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}transparent{% endblock %}
+{% block content %}
+
+  <main class="container my-5">
+    <div class="jumbotron container shadow my-4 p-5 rounded">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+          <h1 class="display-4 text-muted mt-5 brand">Welcome to <span class="text-warning"><strong>HouseWerk</strong></span></h1>
+          <hr>
+          <p class="lead text-muted">Have an invite code? Join an existing group:</p>
+          <form method="post" class="my-4" action="{% url 'associate_group' %}">
+            {% csrf_token %}
+            {% include '../includes/form.html' with form=form %}
+            <button type="submit" class="btn btn-warning px-5 text-white my-3">Submit</button>
+            <a class="btn px-5 ml-2 btn-secondary text-white" href="{% url 'create_group' %}" role="button">New Group</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}
+
+<!-- 
+  changes based on this:
+  https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html
+ -->

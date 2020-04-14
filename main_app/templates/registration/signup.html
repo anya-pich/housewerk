@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
+{% block title %} - Sign Up{% endblock %}
+{% block background %}wallpaper-bright{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}transparent{% endblock %}
 {% block content %}
-<body class="wallpaper-bright">
+
   <main class="container my-5">
     <div class="jumbotron container shadow my-4 p-5 rounded">
       <div class="row justify-content-md-center">
         <div class="col-md-auto">
           <h1 class="display-4 text-muted mt-5 brand">Welcome to <span class="text-warning"><strong>HouseWerk</strong></span></h1>
-          <p class="lead text-muted">Helping households look after their homes together</p>
-          <form method="post" class="my-4" action="{% url 'new_member' %}">
+          <hr>
+          <p class="lead text-muted">Create a new account:</p>
+          <form method="post" class="my-4" action="{% url 'signup' %}">
             {% csrf_token %}
-            {% include '../includes/form.html' with form=p_form %}
             {% include '../includes/form.html' with form=form %}
             <button type="submit" class="btn btn-warning px-5 text-white my-3">Sign Up</button>
             <a class="btn px-5 ml-2 btn-secondary text-white" href="{% url 'login' %}" role="button">Log In</a>
@@ -18,14 +22,8 @@
       </div>
     </div>
   </main>
-  {% include 'includes/footer_clear.html' %} 
-</body>
 
 {% endblock %}
-
-<!-- {{ form.as_p }}
-{{p_form.as_p}}
-<input type="submit" class="btn" value="new_member"> -->
 
 <!-- 
   changes based on this:

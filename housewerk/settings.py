@@ -78,8 +78,7 @@ WSGI_APPLICATION = 'housewerk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'housewerk',
-        'USER':'hch'
+        'NAME': 'housewerk'
     }
 }
 
@@ -122,6 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'about'
+LOGIN_REDIRECT_URL = 'profile_home'
 
 LOGOUT_REDIRECT_URL = '/'
