@@ -12,17 +12,17 @@ The MVP will allow users to register or log in to an existing group, view the ch
 
 ## Wireframes
 
-![image](wire1.png)
+![image](main_app/static/img/wire1.png)
 
-![image](wire2.png)
+![image](main_app/static/img/wire2.png)
 
-![image](wire3.png)
+![image](main_app/static/img/wire3.png)
 
-![image](wire4.png)
+![image](main_app/static/img/wire4.png)
 
 ## Data Models
 
-![image](IMG_20200409_133745__01.jpg)
+![image](main_app/static/img/IMG_20200409_133745__01.jpg)
 
 ## Milestones
 
@@ -37,5 +37,4 @@ Tuesday: debugging & presentation, deploy to Heroku
 
 [Trello task board](https://trello.com/b/6cTaclwp/to-dos)
 
----
-[back to the top](#HouseWerk)
+
